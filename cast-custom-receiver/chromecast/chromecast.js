@@ -60,8 +60,8 @@ window.onload = function() {
         window.messageBus.send(event.senderId, event.data);
     }
 
-    function sendMessage() {
-        window.messageBus.send(event.senderId, {
+    function sendMessage(senderId) {
+        window.messageBus.send(senderId, {
             'event': 'error',
             'message': "PENIS!!!!"
         });
