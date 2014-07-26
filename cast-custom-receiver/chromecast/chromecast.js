@@ -54,6 +54,7 @@ window.onload = function() {
 
         } catch(e) {
             console.log(e);
+            sendMessage(event.senderId, "error", "It broked.");
             displayText(event.data);
         }
 
