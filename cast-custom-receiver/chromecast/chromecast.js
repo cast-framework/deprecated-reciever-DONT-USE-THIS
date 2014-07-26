@@ -16,9 +16,9 @@ window.onload = function() {
 
     // handler for 'senderconnected' event
     castReceiverManager.onSenderConnected = function(event) {
-        document.getElementById('connectedDevices').innerHTML += "<br>"+event.data+"<br>"+window.castReceiverManager.getSender(event.data);
+        document.getElementById('connectedDevices').innerHTML += "<br>"+event.data;
         console.log('Received Sender Connected event: ' + event.data);
-        console.log(window.castReceiverManager.getSender(event.data).userAgent);
+        console.dir(window.castReceiverManager.getSender(event.data));
     };
 
     // handler for 'senderdisconnected' event
