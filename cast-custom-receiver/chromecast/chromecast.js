@@ -49,7 +49,7 @@ window.onload = function() {
         try {
             var data = JSON.parse(event.data);
             handleCmd(event.senderId, data.command);
-        } catch() {
+        } catch(e) {
             displayText(event.data);
         }
 
