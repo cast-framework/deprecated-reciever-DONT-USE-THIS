@@ -47,7 +47,8 @@ window.onload = function() {
         console.log('Message [' + event.senderId + ']: ' + event.data);
 
         try {
-            handleCmd(event.senderId, event.data.command);
+            var data = JSON.parse(event.data);
+            handleCmd(event.senderId, data.command);
         } catch() {
             displayText(event.data);
         }
