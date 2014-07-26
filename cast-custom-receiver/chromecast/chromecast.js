@@ -47,23 +47,25 @@ window.onload = function() {
         try {
             var data = JSON.parse(event.data);
             handleCmd(event.senderId, data.command);
+
+            console.dir(event);
+
+            sendMessage(event.senderId, "msgReceived", "FUCKING HELL");
+
         } catch(e) {
+            console.log(e);
             displayText(event.data);
         }
 
-        console.dir(event);
-
-        sendMessage(event.senderId);
-
         // inform all senders on the CastMessageBus of the incoming message event
         // sender message listener will be invoked
-        window.messageBus.send(event.senderId, event.data);
+        //window.messageBus.send(event.senderId, event.data);
     }
 
-    function sendMessage(senderId) {
-        window.messageBus.send(senderId, JSON.stringify({
-            'event': 'error',
-            'message': "PENIS!!!!"
+    function sendMessage(clientId, evt, msg) {
+        window.messageBus.send(clientId, JSON.stringify({
+            'event': evt,
+            'message': msg
         }));
     }
 
