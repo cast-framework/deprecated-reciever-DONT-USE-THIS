@@ -55,10 +55,10 @@ window.onload = function() {
 
         console.dir(event);
 
-       // window.messageBus.send(event.senderId, {
-       //      'event': 'error',
-       //      'message': "PENIS!!!!"
-       //  });
+       window.messageBus.send(event.senderId, {
+            'event': 'error',
+            'message': "PENIS!!!!"
+        });
 
         // inform all senders on the CastMessageBus of the incoming message event
         // sender message listener will be invoked
