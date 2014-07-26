@@ -38,7 +38,7 @@ window.onload = function() {
     };
 
     // create a CastMessageBus to handle messages for a custom namespace
-    window.messageBus = window.castReceiverManager.getCastMessageBus('urn:x-cast:com.google.cast.sample.helloworld', cast.receiver.CastMessageBus.MessageType.JSON);
+    window.messageBus = window.castReceiverManager.getCastMessageBus('urn:x-cast:com.google.cast.sample.helloworld');
 
     // handler for the CastMessageBus message event
     window.messageBus.onMessage = function(event) {
