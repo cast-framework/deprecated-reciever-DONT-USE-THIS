@@ -46,7 +46,11 @@ window.onload = function() {
     window.messageBus.onMessage = function(event) {
         console.log('Message [' + event.senderId + ']: ' + event.data);
 
-        handleCmd(event.senderId, event.data.command);
+        try {
+            handleCmd(event.senderId, event.data.command);
+        } catch() {
+            displayText(event.data);
+        }
 
         console.dir(event);
 
@@ -64,13 +68,14 @@ window.onload = function() {
         switch(cmd) {
             case "join":
                 console.log("join: " + senderId);
+                displayText("JOIN");
                 break;
             case "quit":
                 console.log("quit: " + senderId);
+                displayText("QUIT");
                 break;
             default:
                 console.log("default: " + senderId);
-                displayText(senderId + "<br>" + cmd);
         }
     }
 
