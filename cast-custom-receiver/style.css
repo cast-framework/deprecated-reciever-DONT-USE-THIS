@@ -1,7 +1,7 @@
 body {
 	overflow:hidden;
 }
-div {
+#message {
 	height:720PX;
 	width:1280PX;
 	text-align:center;
@@ -13,4 +13,11 @@ div {
 	font-weight:bold;
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:40px;
+}
+#connectedDevices {
+	position:absolute;
+	bottom:0;
+	right:0;
+	background-color:orange;
+	width:500px;
 }
