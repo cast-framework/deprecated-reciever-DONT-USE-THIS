@@ -44,12 +44,27 @@ window.onload = function() {
 
     // handler for the CastMessageBus message event
     window.messageBus.onMessage = function(event) {
-      console.log('Message [' + event.senderId + ']: ' + event.data);
-      // display the message from the sender
-      displayText(event.data);
-      // inform all senders on the CastMessageBus of the incoming message event
-      // sender message listener will be invoked
-      window.messageBus.send(event.senderId, event.data);
+        console.log('Message [' + event.senderId + ']: ' + event.data);
+
+        handleCmd();
+        
+        // inform all senders on the CastMessageBus of the incoming message event
+        // sender message listener will be invoked
+        window.messageBus.send(event.senderId, event.data);
+    }
+
+    function handleCmd(cmd) {
+        switch(event.data.command) {
+            case "join":
+                console.log("join: " + event.senderId);
+                break;
+            case "quit":
+                console.log("quit: " + event.senderId);
+                break;
+            default:
+                console.log("default: " + event.senderId);
+                displayText(event.data);
+        }
     }
 
     // initialize the CastReceiverManager with an application status message
