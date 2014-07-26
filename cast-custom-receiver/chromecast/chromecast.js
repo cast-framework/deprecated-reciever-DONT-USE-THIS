@@ -61,10 +61,10 @@ window.onload = function() {
     }
 
     function sendMessage(senderId) {
-        window.messageBus.send(senderId, {
+        window.messageBus.send(senderId, JSON.stringify({
             'event': 'error',
             'message': "PENIS!!!!"
-        });
+        }));
     }
 
     function handleCmd(senderId, cmd) {
