@@ -38,9 +38,7 @@ window.onload = function() {
     };
 
     // create a CastMessageBus to handle messages for a custom namespace
-    window.messageBus =
-      window.castReceiverManager.getCastMessageBus(
-          'urn:x-cast:com.google.cast.sample.helloworld');
+    window.messageBus = window.castReceiverManager.getCastMessageBus('urn:x-cast:com.google.cast.sample.helloworld', cast.receiver.CastMessageBus.MessageType.JSON);
 
     // handler for the CastMessageBus message event
     window.messageBus.onMessage = function(event) {
@@ -55,14 +53,18 @@ window.onload = function() {
 
         console.dir(event);
 
-       window.messageBus.send(event.senderId, {
-            'event': 'error',
-            'message': "PENIS!!!!"
-        });
+        sendMessage(event.senderId);
 
         // inform all senders on the CastMessageBus of the incoming message event
         // sender message listener will be invoked
         window.messageBus.send(event.senderId, event.data);
+    }
+
+    function sendMessage() {
+        window.messageBus.send(event.senderId, {
+            'event': 'error',
+            'message': "PENIS!!!!"
+        });
     }
 
     function handleCmd(senderId, cmd) {
