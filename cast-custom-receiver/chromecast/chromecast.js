@@ -1,4 +1,7 @@
 window.onload = function() {
+
+    ////// INIT ///////
+
     cast.receiver.logger.setLevelValue(0);
     window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
     console.log('Starting Receiver Manager');
@@ -8,6 +11,8 @@ window.onload = function() {
       console.log('Received Ready event: ' + JSON.stringify(event.data));
       window.castReceiverManager.setApplicationState("Application status is ready...");
     };
+
+    ////// SENDERS ///////
 
     // handler for 'senderconnected' event
     castReceiverManager.onSenderConnected = function(event) {
@@ -22,6 +27,8 @@ window.onload = function() {
       window.close();
     }
     };
+
+    ////// VOLUME ///////
 
     // handler for 'systemvolumechanged' event
     castReceiverManager.onSystemVolumeChanged = function(event) {
@@ -46,13 +53,5 @@ window.onload = function() {
 
     // initialize the CastReceiverManager with an application status message
     window.castReceiverManager.start({statusText: "Application is starting"});
-    console.log('Receiver Manager started');
-    };
-
-    // utility function to display the text message in the input field
-    function displayText(text) {
-    document.getElementById("message").style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16);
-    console.log(text);
-    document.getElementById("message").innerHTML=text;
-    window.castReceiverManager.setApplicationState(text);
+        console.log('Receiver Manager started');
     };
