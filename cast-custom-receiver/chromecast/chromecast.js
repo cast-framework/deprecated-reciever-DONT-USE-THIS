@@ -46,7 +46,7 @@ window.onload = function() {
     window.messageBus.onMessage = function(event) {
         console.log('Message [' + event.senderId + ']: ' + event.data);
 
-        handleCmd(event.senderId, event.data.command);
+        //handleCmd(event.senderId, event.data.command);
 
         console.dir(event);
 
