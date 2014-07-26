@@ -47,7 +47,12 @@ window.onload = function() {
         console.log('Message [' + event.senderId + ']: ' + event.data);
 
         handleCmd();
-        
+
+       window.messageBus.send(event.senderId, {
+            'event': 'error',
+            'message': "PENIS!!!!"
+        });
+
         // inform all senders on the CastMessageBus of the incoming message event
         // sender message listener will be invoked
         window.messageBus.send(event.senderId, event.data);
