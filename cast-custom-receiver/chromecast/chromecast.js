@@ -16,8 +16,9 @@ window.onload = function() {
 
     // handler for 'senderconnected' event
     castReceiverManager.onSenderConnected = function(event) {
-      console.log('Received Sender Connected event: ' + event.data);
-      console.log(window.castReceiverManager.getSender(event.data).userAgent);
+        document.getElementById('connectedDevices').innerHTML += "<br>"+event.data;
+        console.log('Received Sender Connected event: ' + event.data);
+        console.log(window.castReceiverManager.getSender(event.data).userAgent);
     };
 
     // handler for 'senderdisconnected' event
@@ -52,6 +53,9 @@ window.onload = function() {
     }
 
     // initialize the CastReceiverManager with an application status message
-    window.castReceiverManager.start({statusText: "Application is starting"});
-        console.log('Receiver Manager started');
-    };
+    window.castReceiverManager.start({
+            statusText: "Application is starting"
+        });
+    
+    console.log('Receiver Manager started');
+};
