@@ -97,7 +97,7 @@ function initChromecast() {
             case "join":
                 console.log("join: " + clientId);
                 if(window.viewModel.clients.indexOf(clientId) == -1) {
-                    window.viewModel.clients.push(clientId);
+                    window.viewModel.clients.push(window.viewModel.addPlayer(clientId));
                 }
                 console.dir(window.viewModel.clients());
                 var cards = [];
@@ -111,7 +111,7 @@ function initChromecast() {
                 break;
             case "quit":
                 console.log("quit: " + clientId);
-                var index = window.viewModel.clients.indexOf(clientId);
+                var index = window.viewModel.removePlayer(clientId);
                 if (index > -1) {
                     window.viewModel.clients.splice(index, 1);
                 }
@@ -142,6 +142,8 @@ function initChromecast() {
                     'content': window.viewModel.getCard(clientId)
                 });
                 break;
+            case "czarFlip":
+
             default:
                 console.log("default: " + clientId);
         }

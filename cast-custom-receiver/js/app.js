@@ -4,10 +4,29 @@ $(document).ready(function() {
 		var self = this;
 
 		var Card = function(name, clientId, color, oppositeColor) {
+			this.show = ko.observable(false);
 			this.name = name;
 			this.clientId = clientId;
 			this.color = ko.observable(color);
 			this.oppositeColor = ko.observable(oppositeColor);
+		};
+
+		var Player = function(clientId) {
+			this.clientId = clientId;
+			this.score = 0;
+		};
+
+		self.addPlayer = function(clientId) {
+			self.clients.push(new Player(clientId));
+		};
+
+		self.removePlayer = function(clientId) {
+			for(var i = 0; i < self.clients().length; i++) {
+				if(self.clients()[i].clientId() == clientId) {
+					window.viewModel.clients.splice(i, 1);
+					break;
+				}
+			}
 		};
 
 		self.chooser = ko.observable(0);

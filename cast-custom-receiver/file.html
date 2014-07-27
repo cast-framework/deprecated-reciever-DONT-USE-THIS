@@ -38,8 +38,8 @@ limitations under the License.
             <table>
                 <tbody data-bind="foreach: clients">
                     <tr>
-                        <td>Player 1:</td>
-                        <td style="font-weight:bold">4</td>
+                        <td data-bind="text: 'Player '+($index() + 1)"></td>
+                        <td style="font-weight:bold" data-bind="score"></td>
                     </tr>
             </tbody>
             </table>
