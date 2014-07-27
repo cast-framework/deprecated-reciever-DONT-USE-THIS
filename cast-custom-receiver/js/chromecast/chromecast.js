@@ -9,6 +9,7 @@ function displayText(viewModel, textMsg) {
         while(i++ <= viewModel.connections()) {
             str += "!";
         }
+        return str;
     };
     viewModel.text("There are " + viewModel.connections() + " connection" + (viewModel.connections() == 1 ? "" : "s") + exclamations() + "\nYou said: "+textMsg);
     window.castReceiverManager.setApplicationState(textMsg);
