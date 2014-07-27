@@ -35,6 +35,7 @@ body {
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:30px;
 	font-weight:bold;
+	border-radius:10px;
 }
 
 #cardContainer {
