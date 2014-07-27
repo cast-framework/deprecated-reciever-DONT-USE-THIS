@@ -19,7 +19,7 @@ function initChromecast() {
         this.sendMessage = function(clientId, obj) {
              window.messageBus.send(clientId, JSON.stringify(obj));
         };
-    }
+    };
 
     var connections = 0;
 
