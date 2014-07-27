@@ -40,6 +40,7 @@ function initChromecast() {
     // handler for 'senderconnected' event
     castReceiverManager.onSenderConnected = function(event) {
         window.viewModel.clients = ko.observable(window.castReceiverManager.getSenders());
+        console.dir(window.viewModel.clients());
         console.dir(window.castReceiverManager.getSenders());
         console.log('Received Sender Connected event: ' + event.data);
         console.dir(window.castReceiverManager.getSender(event.data));
