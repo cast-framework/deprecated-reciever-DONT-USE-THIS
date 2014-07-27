@@ -129,13 +129,13 @@ function initChromecast() {
                 broadcast({
                     'command': 'ready'
                 });
-                sendMessage(window.viewModel.clients()[window.viewModel.czarIndex()].clientId, {
-                    'command': 'czar',
-                    'content': {
-                        'val': true,
-                        'card': window.viewModel.blackCard()
-                    }
-                });
+                // sendMessage(window.viewModel.clients()[window.viewModel.czarIndex()].clientId, {
+                //     'command': 'czar',
+                //     'content': {
+                //         'val': true,
+                //         'card': window.viewModel.blackCard()
+                //     }
+                // });
                 broadcast({
                     'command': 'czar',
                     'content': {
