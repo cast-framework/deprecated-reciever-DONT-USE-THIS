@@ -1,17 +1,5 @@
 $(document).ready(function() {
 
-	var cardDeck = [
-		'A Gypsy curse.',
-		'A moment of silence.',
-		'A sausage festival.',
-		'An honest cop with nothing left to lose.',
-		'Famine.',
-		'Flesh-eating bacteria.',
-		'Flying sex snakes.',
-		'Not giving a shit about the Third World.',
-		'Sexting.'
-	];
-
 	var ViewModel = function(first, last) {
 		var self = this;
 
