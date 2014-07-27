@@ -89,7 +89,7 @@ function initChromecast() {
     }
 
     function checkIfAllCardsSubmitted() {
-        if(window.viewModel.deck.length == window.castReceiverManager.getSenders().length) {
+        if(window.viewModel.deck().length == window.viewModel.clients.length) {
             window.viewModel.allCardsSubmitted(true);
         }
     }
@@ -99,6 +99,7 @@ function initChromecast() {
         switch(cmd) {
             case "join":
                 console.log("join: " + senderId);
+                window.viewModel.clients.push(senderId);
                 var cards = [];
                 while(cards.length < 7) {
                     cards.push(window.viewModel.getCard());
@@ -110,6 +111,10 @@ function initChromecast() {
                 break;
             case "quit":
                 console.log("quit: " + senderId);
+                var index = window.viewModel.clients().indexOf(senderId);
+                if (index > -1) {
+                    window.viewModel.clients().splice(index, 1);
+                }
                 sendMessage(senderId, {
                     'command': 'quit',
                     'content': 'NOT ALLOWED'
@@ -124,9 +129,9 @@ function initChromecast() {
                 });
                 break;
             case "card":
-                checkIfAllCardsSubmitted();
                 console.log("card: " + senderId);
                 window.viewModel.addCard(data.content);
+                checkIfAllCardsSubmitted();
                 sendMessage(senderId, {
                     'command': 'card',
                     'content': window.viewModel.getCard()
