@@ -3,13 +3,11 @@ $(document).ready(function() {
 	var ViewModel = function(first, last) {
 		var self = this;
 
-		var Card = function(name, clientId, color) {
+		var Card = function(name, clientId, color, oppositeColor) {
 			this.name = name;
 			this.clientId = clientId;
 			this.color = ko.observable(color);
-			this.oppositeColor = ko.computed(function() {
-				return (this.color() == 'black') ? 'white' : 'black';
-			});
+			this.oppositeColor = ko.observable(oppositeColor);
 		};
 
 		self.chooser = ko.observable(0);
@@ -27,7 +25,7 @@ $(document).ready(function() {
 
 		self.getCard = function(clientId) {
 			var index = Math.floor(Math.random()*cardDeck.length);
-			var card = new Card(cardDeck[index], clientId, "white");
+			var card = new Card(cardDeck[index], clientId, "white", "black");
 			if (index > -1) {
 			    cardDeck.splice(index, 1);
 			}
@@ -37,7 +35,7 @@ $(document).ready(function() {
 
 		self.getBlackCard = function(clientId) {
 			var index = Math.floor(Math.random()*blackCards.length);
-			var card = new Card(blackCards[index], clientId, "black");
+			var card = new Card(blackCards[index], clientId, "black", "white");
 			if (index > -1) {
 			    blackCards.splice(index, 1);
 			}
