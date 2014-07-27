@@ -1,4 +1,13 @@
-function initChromecast() {
+// utility function to display the text message in the input field
+function displayText(viewModel, textMsg) {
+    document.getElementById("message").style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+    console.log(textMsg);
+    //document.getElementById("message").innerHTML=text;
+    viewModel.text("You said: "+textMsg);
+    window.castReceiverManager.setApplicationState(textMsg);
+};
+
+function initChromecast(viewModel,) {
 
     var connections = 0;
 
@@ -60,7 +69,7 @@ function initChromecast() {
         } catch(e) {
             console.log(e);
             sendMessage(event.senderId, "error", "It broked.");
-            displayText(event.data);
+            displayText(viewModel, event.data);
         }
 
         // inform all senders on the CastMessageBus of the incoming message event
