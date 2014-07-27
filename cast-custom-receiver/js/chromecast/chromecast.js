@@ -9,17 +9,17 @@ function displayText(textMsg) {
 
 function initChromecast() {
 
-    var Chromecast = function() {
-        this.onReady = castReceiverManager.onReady;
-        this.onClientConnect = castReceiverManager.onSenderConnected;
-        this.onClientDisconnect = castReceiverManager.onSenderDisconnected;
-        this.onMessage = function(event) {
-            console.log(event);
-        };
-        this.sendMessage = function(clientId, obj) {
-             window.messageBus.send(clientId, JSON.stringify(obj));
-        };
-    };
+    // var Chromecast = function() {
+    //     this.onReady = castReceiverManager.onReady;
+    //     this.onClientConnect = castReceiverManager.onSenderConnected;
+    //     this.onClientDisconnect = castReceiverManager.onSenderDisconnected;
+    //     this.onMessage = function(event) {
+    //         console.log(event);
+    //     };
+    //     this.sendMessage = function(clientId, obj) {
+    //          window.messageBus.send(clientId, JSON.stringify(obj));
+    //     };
+    // };
 
     var connections = 0;
 
@@ -85,7 +85,6 @@ function initChromecast() {
         // inform all senders on the CastMessageBus of the incoming message event
         // sender message listener will be invoked
         //window.messageBus.send(event.senderId, event.data);
-        this.onMessage(event);
     }
 
     function sendMessage(clientId, evt, msg) {
@@ -118,5 +117,5 @@ function initChromecast() {
     
     console.log('Receiver Manager started');
 
-    return Chromecast;
+    //return Chromecast();
 }

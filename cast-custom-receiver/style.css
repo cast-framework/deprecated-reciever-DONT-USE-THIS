@@ -21,3 +21,10 @@ body {
 	background-color:orange;
 	width:500px;
 }
+
+.card {
+	position:relative;
+	background-color:white;
+	padding:40px;
+	color:black;
+}

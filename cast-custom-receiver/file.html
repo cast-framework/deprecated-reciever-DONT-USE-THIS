@@ -21,7 +21,9 @@ limitations under the License.
   </head>
   <body>
 	<div id="message" data-bind="text: displayText">Talk to me</div>
-    <div id="connectedDevices">3 devices</div>
+    <!-- ko foreach: deck -->
+        <div class="card" data-bind="text: name"></div>
+    <!-- /ko -->
     <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
     <script type='text/javascript' src='lib/knockout-3.1.0.js'></script>
     <script type='text/javascript' src='lib/jquery-2.1.1.js'></script>
