@@ -14,7 +14,7 @@ $(document).ready(function() {
 
 		var Player = function(clientId) {
 			this.clientId = clientId;
-			this.score = 0;
+			this.score = ko.observable(0);
 		};
 
 		self.addPlayer = function(clientId) {
@@ -52,7 +52,7 @@ $(document).ready(function() {
 		self.clients = ko.observableArray([]);
 		self.deck =  ko.observableArray([]);
 		self.allCardsSubmitted = ko.computed(function() {
-			return (self.clients().length > 0) && (self.deck().length > self.clients().length);
+			return (self.clients().length > 0) && (self.deck().length === self.clients().length);
 		});
 
 		self.getCard = function(clientId) {

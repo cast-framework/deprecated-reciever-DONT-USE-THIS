@@ -139,7 +139,7 @@ function initChromecast() {
                     });
                 }
                 break;
-            case "card":
+            case "player_pick":
                 console.log("card: " + clientId);
                 window.viewModel.addCard(data.content, clientId);
                 if(window.viewModel.allCardsSubmitted()) {
@@ -155,6 +155,22 @@ function initChromecast() {
             case "czarFlip":
                 window.viewModel.blackCard().flipped(true);
                 break;
+            case "czar_pick":
+                var name = data.content.name;
+                var winner = null;
+                for(var i = 0; i < window.viewModel.deck().length; i++) {
+                    if(window.viewModel.deck()[i].name == name) {
+                        winner = window.viewModel.deck()[i];
+                    }
+                }
+                window.viewModel.deck(null);
+                window.viewModel.deck(winner);
+                for(var i = 0; i < window.viewModel.clients().length; i++) {
+                    if(window.viewModel.clients()[i].clientId() == winner.clientId) {
+                        window.viewModel.clients()[i].score(window.viewModel.clients()[i].score()+1);
+                        break;
+                    }
+                }
             default:
                 console.log("default: " + clientId);
         }
