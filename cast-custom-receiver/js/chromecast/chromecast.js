@@ -10,7 +10,7 @@ function displayText(viewModel, textMsg) {
             str += "!";
         }
     };
-    viewModel.text("There are " + viewModel.connections() + "connection" + (viewModel.connections() == 1 ? "" : "s") + exclamations() + "<br>You said: "+textMsg);
+    viewModel.text("There are " + viewModel.connections() + " connection" + (viewModel.connections() == 1 ? "" : "s") + exclamations() + "\nYou said: "+textMsg);
     window.castReceiverManager.setApplicationState(textMsg);
 };
 
