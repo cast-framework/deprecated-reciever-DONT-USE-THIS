@@ -66,7 +66,7 @@ function initChromecast() {
     window.messageBus.onMessage = function(event) {
         console.log('Message [' + event.senderId + ']: ' + event.data);
 
-        console.dir(event.data)
+        console.log(event.data)
 
         try {
             var data = JSON.parse(event.data);
