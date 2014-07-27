@@ -33,7 +33,7 @@ function initChromecast() {
 
     // handler for 'senderdisconnected' event
     castReceiverManager.onSenderDisconnected = function(event) {
-      viewModel.connections(window.castReceiverManager.getSenders().length);
+      window.viewModel.connections(window.castReceiverManager.getSenders().length);
       console.log('Received Sender Disconnected event: ' + event.data);
       if (window.castReceiverManager.getSenders().length == 0) {
       window.close();
