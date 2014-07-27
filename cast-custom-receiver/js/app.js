@@ -9,6 +9,13 @@ $(document).ready(function() {
 			this.clientId = clientId;
 			this.color = ko.observable(color);
 			this.oppositeColor = ko.observable(oppositeColor);
+			this.flipped = ko.computed(function() {
+				if(this.color() != 'black') {
+					return self.allCardsSubmitted();
+				} else {
+					return self.czarFlipped();
+				}
+			});
 		};
 
 		var Player = function(clientId) {
@@ -29,6 +36,18 @@ $(document).ready(function() {
 			}
 		};
 
+		// self.flipBlackCard = function() {
+		// 	self.deck()[0].flipped(true);
+		// };
+
+		// self.flipCards = function() {
+		// 	for(var i = 0; i < self.deck().length; i++) {
+		// 		self.deck()[i].flipped(true);
+		// 	}
+		// };
+
+		self.czarFlipped = ko.observable(false);
+
 		self.chooser = ko.observable(0);
 		self.text = ko.observable("TALK TO ME, MOTHERFUCKER!!!!!!!!!");
 		self.connections = ko.observable(0);
@@ -39,7 +58,7 @@ $(document).ready(function() {
 		self.clients = ko.observableArray([]);
 		self.deck =  ko.observableArray([]);
 		self.allCardsSubmitted = ko.computed(function() {
-			return (self.clients().length > 0) && (self.deck().length === self.clients().length);
+			return (self.clients().length > 0) && (self.deck().length > self.clients().length);
 		});
 
 		self.getCard = function(clientId) {

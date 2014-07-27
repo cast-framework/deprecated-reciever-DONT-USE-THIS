@@ -143,7 +143,8 @@ function initChromecast() {
                 });
                 break;
             case "czarFlip":
-
+                window.viewModel.czarFlipped(true);
+                break;
             default:
                 console.log("default: " + clientId);
         }

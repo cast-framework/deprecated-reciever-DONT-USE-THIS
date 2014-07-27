@@ -29,8 +29,10 @@ limitations under the License.
                         'color': oppositeColor,
                         'border-color': color
                     }">
-                    <span data-bind="text: name"></span>
-                    <img src="img/logo_full.png">
+                    <!-- ko if: flipped -->
+                        <span data-bind="text: name"></span>
+                        <img src="img/logo_full.png">
+                    <!-- /ko -->
                 </div>
             <!-- /ko -->
         </div>
@@ -49,11 +51,6 @@ limitations under the License.
         <div class="message">
             Waiting for all players to join...<br>
             Connected Players: <span data-bind="text: clients().length"></span>
-        </div>
-    <!-- /ko -->
-    <!-- ko if: allCardsSubmitted -->
-        <div class="toast">
-            All Cards Submitted!
         </div>
     <!-- /ko -->
     <script type="text/javascript" src="white cards.js"></script>
