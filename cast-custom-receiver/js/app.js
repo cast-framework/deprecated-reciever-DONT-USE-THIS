@@ -9,13 +9,6 @@ $(document).ready(function() {
 			this.clientId = clientId;
 			this.color = ko.observable(color);
 			this.oppositeColor = ko.observable(oppositeColor);
-			this.flipped = ko.computed(function() {
-				if(this.color() != 'black') {
-					return self.allCardsSubmitted();
-				} else {
-					return self.czarFlipped();
-				}
-			});
 		};
 
 		var Player = function(clientId) {
