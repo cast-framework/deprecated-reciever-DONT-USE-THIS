@@ -70,7 +70,7 @@ function initChromecast() {
 
         try {
             var data = JSON.parse(event.data);
-            handleCmd(event.senderId, data.command);
+            handleCmd(event.senderId, data);
 
             console.dir(event);
 
@@ -93,7 +93,8 @@ function initChromecast() {
         }));
     }
 
-    function handleCmd(senderId, cmd) {
+    function handleCmd(senderId, data) {
+        var cmd = data.command;
         switch(cmd) {
             case "join":
                 console.log("join: " + senderId);
@@ -107,7 +108,7 @@ function initChromecast() {
                 break;
             case "card":
                 console.log("card: " + senderId);
-                window.viewModel.getCard();
+                window.viewModel.addCard(data.content);
             default:
                 console.log("default: " + senderId);
         }

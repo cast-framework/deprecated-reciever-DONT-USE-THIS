@@ -22,7 +22,11 @@ $(document).ready(function() {
 		self.getCard = function() {
 			var card = new Card(makeid());
 			self.deck.push(card);
-		}
+		};
+
+		self.addCard = function(content) {
+			self.deck.push(new Card(content));
+		};
 
 		self.ready = ko.observable(false);
 
