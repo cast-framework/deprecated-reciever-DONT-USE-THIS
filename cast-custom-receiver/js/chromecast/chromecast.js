@@ -94,6 +94,7 @@ function initChromecast() {
                 break;
             default:
                 console.log("default: " + senderId);
+                displayText(cmd);
         }
     }
 
