@@ -15,6 +15,8 @@ $(document).ready(function() {
 			return "There " + (self.connections() == 1 ? "is" : "are") + " " + self.connections() + " connection" + (self.connections() == 1 ? "" : "s") + "!\nYou said: "+self.text();
 		});
 
+		self.blackCard = ko.observable(null);
+
 		self.clients = ko.observableArray([]);
 		self.deck =  ko.observableArray([]);
 		self.allCardsSubmitted = ko.computed(function() {

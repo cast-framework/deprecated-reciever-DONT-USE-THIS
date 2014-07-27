@@ -31,12 +31,12 @@ limitations under the License.
         </div>
         <div id="currentScore">
             <table>
-            <!-- ko foreach: clients -->
-                <tr>
-                    <td>Player 1:</td>
-                    <td style="font-weight:bold">4</td>
-                </tr>
-            <!-- /ko -->
+                <tbody data-bind="foreach: clients">
+                    <tr>
+                        <td>Player 1:</td>
+                        <td style="font-weight:bold">4</td>
+                    </tr>
+            </tbody>
             </table>
         </div>
     <!-- /ko -->
