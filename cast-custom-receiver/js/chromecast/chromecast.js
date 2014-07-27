@@ -6,11 +6,11 @@ function displayText(viewModel, textMsg) {
     var exclamations = function() {
         var str = "";
         var i = 0;
-        while(i++ <= connections) {
+        while(i++ <= viewModel.connections()) {
             str += "!";
         }
     };
-    viewModel.text("There are " + connections + "connection" + (connections == 1 ? "" : "s") + exclamations() + "<br>You said: "+textMsg);
+    viewModel.text("There are " + viewModel.connections() + "connection" + (viewModel.connections() == 1 ? "" : "s") + exclamations() + "<br>You said: "+textMsg);
     window.castReceiverManager.setApplicationState(textMsg);
 };
 
@@ -34,14 +34,14 @@ function initChromecast(viewModel) {
 
     // handler for 'senderconnected' event
     castReceiverManager.onSenderConnected = function(event) {
-        connections++;
+        viewModel.connections(viewModel.connections()++);
         console.log('Received Sender Connected event: ' + event.data);
         console.dir(window.castReceiverManager.getSender(event.data));
     };
 
     // handler for 'senderdisconnected' event
     castReceiverManager.onSenderDisconnected = function(event) {
-        connections--;
+      viewModel.connections(viewModel.connections()--);
       console.log('Received Sender Disconnected event: ' + event.data);
       if (window.castReceiverManager.getSenders().length == 0) {
       window.close();
