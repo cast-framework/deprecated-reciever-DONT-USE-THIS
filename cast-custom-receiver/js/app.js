@@ -6,7 +6,7 @@ $(document).ready(function() {
 		var Card = function(name, clientId, color) {
 			this.name = name;
 			this.clientId = clientId;
-			this.color = color;
+			this.color = ko.observable(color);
 		};
 
 		self.chooser = ko.observable(0);
