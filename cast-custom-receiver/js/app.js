@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 	var ViewModel = function(first, last) {
 		this.text = ko.observable("TALK TO ME, MOTHERFUCKER!!!!!!!!!");
+		this.connections = ko.observable(0);
 	    this.firstName = ko.observable(first);
 	    this.lastName = ko.observable(last);
 	 

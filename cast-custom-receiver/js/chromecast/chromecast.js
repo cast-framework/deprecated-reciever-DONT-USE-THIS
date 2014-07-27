@@ -3,7 +3,14 @@ function displayText(viewModel, textMsg) {
     document.getElementById("message").style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16);
     console.log(textMsg);
     //document.getElementById("message").innerHTML=text;
-    viewModel.text("You said: "+textMsg);
+    var exclamations = function() {
+        var str = "";
+        var i = 0;
+        while(i++ <= connections) {
+            str += "!";
+        }
+    };
+    viewModel.text("There are " + connections + "connection" + (connections == 1 ? "s" : "") + exclamations() + "<br>You said: "+textMsg);
     window.castReceiverManager.setApplicationState(textMsg);
 };
 
@@ -28,7 +35,6 @@ function initChromecast(viewModel) {
     // handler for 'senderconnected' event
     castReceiverManager.onSenderConnected = function(event) {
         connections++;
-        document.getElementById('connectedDevices').innerHTML = connections;
         console.log('Received Sender Connected event: ' + event.data);
         console.dir(window.castReceiverManager.getSender(event.data));
     };
@@ -36,7 +42,6 @@ function initChromecast(viewModel) {
     // handler for 'senderdisconnected' event
     castReceiverManager.onSenderDisconnected = function(event) {
         connections--;
-        document.getElementById('connectedDevices').innerHTML = connections;
       console.log('Received Sender Disconnected event: ' + event.data);
       if (window.castReceiverManager.getSenders().length == 0) {
       window.close();
