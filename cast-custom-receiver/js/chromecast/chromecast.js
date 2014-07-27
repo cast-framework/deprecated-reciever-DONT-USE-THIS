@@ -89,7 +89,9 @@ function initChromecast() {
     }
 
     function checkIfAllCardsSubmitted() {
-        if(window.viewModel.deck().length == window.viewModel.clients.length) {
+        console.log(window.viewModel.deck());
+        console.log(window.viewModel.clients());
+        if(window.viewModel.deck.length == window.viewModel.clients.length) {
             window.viewModel.allCardsSubmitted(true);
         }
     }
