@@ -97,7 +97,7 @@ function initChromecast() {
             case "join":
                 console.log("join: " + clientId);
                 if(window.viewModel.clients.indexOf(clientId) == -1) {
-                    window.viewModel.clients.push(window.viewModel.addPlayer(clientId));
+                    window.viewModel.addPlayer(clientId);
                 }
                 console.dir(window.viewModel.clients());
                 var cards = [];
