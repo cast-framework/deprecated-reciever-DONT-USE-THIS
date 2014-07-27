@@ -20,9 +20,17 @@ limitations under the License.
     <title>Cast Hello Text</title>
   </head>
   <body>
-	<div id="message" data-bind="text: displayText">Talk to me</div>
-    <!-- ko foreach: deck -->
-        <div class="card" data-bind="text: name"></div>
+    <!-- ko if: ready -->
+        <div id="cardContainer">
+            <!-- ko foreach: deck -->
+                <div class="card" data-bind="text: name"></div>
+            <!-- /ko -->
+        </div>
+    <!-- /ko -->
+    <!-- ko ifnot: ready -->
+        <div class="message">
+            Waiting for all players to join...
+        </div>
     <!-- /ko -->
     <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
     <script type='text/javascript' src='lib/knockout-3.1.0.js'></script>

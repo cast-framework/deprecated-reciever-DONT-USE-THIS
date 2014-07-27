@@ -79,7 +79,6 @@ function initChromecast() {
         } catch(e) {
             console.log(e);
             sendMessage(event.senderId, "error", "It broked.");
-            displayText(event.data);
         }
 
         // inform all senders on the CastMessageBus of the incoming message event
@@ -98,15 +97,16 @@ function initChromecast() {
         switch(cmd) {
             case "join":
                 console.log("join: " + senderId);
-                displayText("JOIN");
                 break;
             case "quit":
                 console.log("quit: " + senderId);
-                displayText("QUIT");
+                break;
+            case "ready":
+                console.log("ready: " + senderId);
+                window.viewModel.ready(true);
                 break;
             default:
                 console.log("default: " + senderId);
-                displayText(cmd);
         }
     }
 

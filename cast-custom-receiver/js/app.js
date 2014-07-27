@@ -16,6 +16,29 @@ $(document).ready(function() {
 		self.deck =  ko.observableArray([]);
 		var card1 = new Card("penis card");
 		self.deck.push(card1);
+		self.deck.push(card1);
+		self.deck.push(card1);
+
+		self.getCard = function() {
+			var card = new Card(makeid());
+			self.deck.push(card);
+		}
+
+		self.ready = ko.observable(false);
+
+		function makeid() {
+		    var text = "";
+		    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+		    for(var j = 0; j < 3; j++) {
+			    for( var i=0; i < 5; i++ ) {
+			        text += possible.charAt(Math.floor(Math.random() * possible.length));
+			    }
+			    text += " ";
+			}
+
+		    return text;
+		}
 	};
 	
 	window.viewModel = new ViewModel("Planet", "Earth");
