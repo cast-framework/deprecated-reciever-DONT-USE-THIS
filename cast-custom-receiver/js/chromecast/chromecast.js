@@ -3,15 +3,6 @@ function displayText(textMsg) {
     document.getElementById("message").style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16);
     console.log(textMsg);
     //document.getElementById("message").innerHTML=text;
-    var exclamations = function() {
-        var str = "";
-        var i = 0;
-        while(i++ <= window.viewModel.connections()) {
-            str += "!";
-        }
-        return str;
-    };
-    viewModel.text("There " + (window.viewModel.connections() == 1 ? "is" : "are") + " " + window.viewModel.connections() + " connection" + (window.viewModel.connections() == 1 ? "" : "s") + exclamations() + "\nYou said: "+textMsg);
     window.castReceiverManager.setApplicationState(textMsg);
 };
 
