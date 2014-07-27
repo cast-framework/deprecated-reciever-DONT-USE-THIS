@@ -148,7 +148,7 @@ function initChromecast() {
                     broadcast({
                         'command': 'allCardsSubmitted'
                     });
-                    sendMessage(window.viewModel.clients()[window.viewModel.czarIndex].clientId, {
+                    sendMessage(window.viewModel.clients()[window.viewModel.czarIndex()].clientId, {
                         'command': 'czar',
                         'content': window.viewModel.deck()
                     });
