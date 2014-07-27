@@ -124,7 +124,8 @@ function initChromecast() {
             case "ready":
                 console.log("ready: " + clientId);
                 window.viewModel.ready(true);
-                window.viewModel.deck.push(window.viewModel.getBlackCard(clientId));
+                window.viewModel.blackCard(window.viewModel.getBlackCard(clientId));
+                window.viewModel.deck.push(window.viewModel.blackCard());
                 broadcast({
                     'command': 'ready'
                 });
@@ -143,7 +144,7 @@ function initChromecast() {
                 });
                 break;
             case "czarFlip":
-                window.viewModel.czarFlipped(true);
+                window.viewModel.blackCard().flipped(true);
                 break;
             default:
                 console.log("default: " + clientId);

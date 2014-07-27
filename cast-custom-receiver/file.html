@@ -29,7 +29,7 @@ limitations under the License.
                         'color': oppositeColor,
                         'border-color': color
                     }">
-                    <div data-bind="visible: $parent.allCardsSubmitted">
+                    <div data-bind="visible: $parent.allCardsSubmitted() || flipped()">
                         <span data-bind="text: name"></span>
                         <img src="img/logo_full.png">
                     </div>

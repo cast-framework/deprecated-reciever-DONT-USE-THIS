@@ -9,6 +9,7 @@ $(document).ready(function() {
 			this.clientId = clientId;
 			this.color = ko.observable(color);
 			this.oppositeColor = ko.observable(oppositeColor);
+			this.flipped = ko.observable(false);
 		};
 
 		var Player = function(clientId) {
@@ -63,6 +64,8 @@ $(document).ready(function() {
 			return card;
 			//self.deck.push(card);
 		};
+
+		self.blackCard = ko.observable();
 
 		self.getBlackCard = function(clientId) {
 			var index = Math.floor(Math.random()*blackCards.length);
