@@ -39,14 +39,12 @@ function initChromecast() {
 
     // handler for 'senderconnected' event
     castReceiverManager.onSenderConnected = function(event) {
-        document.getElementById("numConnections").innerHTML = window.castReceiverManager.getSenders().length;
         console.log('Received Sender Connected event: ' + event.data);
         console.dir(window.castReceiverManager.getSender(event.data));
     };
 
     // handler for 'senderdisconnected' event
     castReceiverManager.onSenderDisconnected = function(event) {
-        document.getElementById("numConnections").innerHTML = window.castReceiverManager.getSenders().length;
       console.log('Received Sender Disconnected event: ' + event.data);
       if (window.castReceiverManager.getSenders().length == 0) {
       window.close();
@@ -74,11 +72,11 @@ function initChromecast() {
 
             console.dir(event);
 
-            sendMessage(event.senderId, "msgReceived", "FUCKING HELL");
+            //sendMessage(event.senderId, "msgReceived", "FUCKING HELL");
 
         } catch(e) {
             console.log(e);
-            sendMessage(event.senderId, "error", "It broked.");
+            //sendMessage(event.senderId, "error", "It broked.");
         }
 
         // inform all senders on the CastMessageBus of the incoming message event
@@ -86,11 +84,8 @@ function initChromecast() {
         //window.messageBus.send(event.senderId, event.data);
     }
 
-    function sendMessage(clientId, evt, msg) {
-        window.messageBus.send(clientId, JSON.stringify({
-            'event': evt,
-            'message': msg
-        }));
+    function sendMessage(clientId, data) {
+        window.messageBus.send(clientId, JSON.stringify(data));
     }
 
     function handleCmd(senderId, data) {
@@ -98,17 +93,38 @@ function initChromecast() {
         switch(cmd) {
             case "join":
                 console.log("join: " + senderId);
+                var cards = [];
+                while(cards.length < 7) {
+                    cards.push(window.viewModel.getCard());
+                }
+                sendMessage(senderId, {
+                    'command': 'cards',
+                    'content': cards
+                });
                 break;
             case "quit":
                 console.log("quit: " + senderId);
+                sendMessage(senderId, {
+                    'command': 'quit',
+                    'content': 'NOT ALLOWED'
+                });
                 break;
             case "ready":
                 console.log("ready: " + senderId);
                 window.viewModel.ready(true);
+                sendMessage(senderId, {
+                    'command': 'ready',
+                    'content': 'cool beans'
+                });
                 break;
             case "card":
                 console.log("card: " + senderId);
                 window.viewModel.addCard(data.content);
+                sendMessage(senderId, {
+                    'command': 'card',
+                    'content': window.viewModel.getCard()
+                });
+                break;
             default:
                 console.log("default: " + senderId);
         }
