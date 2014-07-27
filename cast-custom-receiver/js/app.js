@@ -8,6 +8,7 @@ $(document).ready(function() {
 			this.clientId = clientId;
 		};
 
+		self.chooser = ko.observable(0);
 		self.text = ko.observable("TALK TO ME, MOTHERFUCKER!!!!!!!!!");
 		self.connections = ko.observable(0);
 		self.displayText = ko.computed(function() {
