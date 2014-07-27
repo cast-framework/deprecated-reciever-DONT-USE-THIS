@@ -106,9 +106,9 @@ function initChromecast() {
                 break;
             case "quit":
                 console.log("quit: " + senderId);
-                var index = window.viewModel.clients().indexOf(senderId);
+                var index = window.viewModel.clients.indexOf(senderId);
                 if (index > -1) {
-                    window.viewModel.clients().splice(index, 1);
+                    window.viewModel.clients.splice(index, 1);
                 }
                 console.dir(window.viewModel.clients());
                 sendMessage(senderId, {
