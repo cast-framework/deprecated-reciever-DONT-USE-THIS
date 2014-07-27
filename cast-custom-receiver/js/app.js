@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	var ViewModel = function(first, last) {
-		this.text = "TALK TO ME, MOTHERFUCKER!!!!!!!!!";
+		this.text = ko.observable("TALK TO ME, MOTHERFUCKER!!!!!!!!!");
 	    this.firstName = ko.observable(first);
 	    this.lastName = ko.observable(last);
 	 
