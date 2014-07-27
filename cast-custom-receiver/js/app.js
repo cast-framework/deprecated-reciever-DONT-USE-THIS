@@ -14,7 +14,9 @@ $(document).ready(function() {
 		});
 
 		self.deck =  ko.observableArray([]);
-		self.allCardsSubmitted = ko.observable(false);
+		self.allCardsSubmitted = ko.computed(function() {
+			return window.viewModel.deck.length == window.viewModel.clients.length;
+		});
 
 		self.getCard = function() {
 			var index = Math.floor(Math.random()*cardDeck.length);
