@@ -1,3 +1,5 @@
+var viewModel;
+
 $(document).ready(function() {
 	initChromecast();
 
