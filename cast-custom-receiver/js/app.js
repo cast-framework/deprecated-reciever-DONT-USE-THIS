@@ -14,13 +14,14 @@ $(document).ready(function() {
 		});
 
 		self.deck =  ko.observableArray([]);
-		var card1 = new Card("penis card");
-		self.deck.push(card1);
-		self.deck.push(card1);
-		self.deck.push(card1);
+		self.allCardsSubmitted = ko.observable(false);
 
 		self.getCard = function() {
-			var card = new Card(cardDeck[Math.floor(Math.random()*cardDeck.length)]);
+			var index = Math.floor(Math.random()*cardDeck.length);
+			var card = new Card(cardDeck[index]);
+			if (index > -1) {
+			    cardDeck.splice(index, 1);
+			}
 			return card;
 			//self.deck.push(card);
 		};
