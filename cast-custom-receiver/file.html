@@ -25,10 +25,10 @@ limitations under the License.
             <!-- ko foreach: deck -->
                 <div class="card" data-bind="
                     style: {
-                       '-webkit-transform': rotationCss,
-                       '-o-transform': rotationCss,
-                       'transform': rotationCss,
-                       'MozTransform': rotationCss
+                       '-webkit-transform': rotationCss(),
+                       '-o-transform': rotationCss(),
+                       'transform': rotationCss(),
+                       'MozTransform': rotationCss()
                 ">
                     <span data-bind="text: name"></span>
                     <img src="img/logo-full.png">
