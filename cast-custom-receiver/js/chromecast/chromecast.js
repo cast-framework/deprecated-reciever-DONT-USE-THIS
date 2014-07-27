@@ -75,7 +75,6 @@ function initChromecast() {
             //sendMessage(event.senderId, "msgReceived", "FUCKING HELL");
 
         } catch(e) {
-            console.log(e);
             //sendMessage(event.senderId, "error", "It broked.");
         }
 
