@@ -83,6 +83,11 @@ $(document).ready(function() {
 
 		self.ready = ko.observable(false);
 
+		self.reset = function() {
+			self.czarIndex((self.czarIndex()+1)%clients().length);
+			self.deck([]);
+		};
+
 		function makeid() {
 		    var text = "";
 		    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

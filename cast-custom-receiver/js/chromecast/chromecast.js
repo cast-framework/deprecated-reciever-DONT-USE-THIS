@@ -66,7 +66,7 @@ function initChromecast() {
     window.messageBus.onMessage = function(event) {
         console.log('Message [' + event.senderId + ']: ' + event.data);
 
-        console.log(event.data)
+        console.log(event.data);
 
         try {
             var data = JSON.parse(event.data);
@@ -148,6 +148,10 @@ function initChromecast() {
                     broadcast({
                         'command': 'allCardsSubmitted'
                     });
+                    sendMessage(window.viewModel.clients()[window.viewModel.czarIndex].clientId, {
+                        'command': 'czar',
+                        'content': window.viewModel.deck()
+                    });
                 }
                 sendMessage(clientId, {
                     'command': 'card',
@@ -173,6 +177,7 @@ function initChromecast() {
                         break;
                     }
                 }
+                window.viewModel.reset();
             default:
                 console.log("default: " + clientId);
         }
