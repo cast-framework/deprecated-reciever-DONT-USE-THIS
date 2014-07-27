@@ -23,7 +23,11 @@ limitations under the License.
     <!-- ko if: ready -->
         <div id="cardContainer">
             <!-- ko foreach: deck -->
-                <div class="card">
+                <div class="card" data-bind="
+                    style: {
+                        'background-color': color;
+                        'color': (color == 'white') ? 'black' : 'white';
+                    }">
                     <span data-bind="text: name"></span>
                     <img src="img/logo_full.png">
                 </div>
