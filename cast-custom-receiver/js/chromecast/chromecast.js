@@ -88,14 +88,6 @@ function initChromecast() {
         window.messageBus.send(clientId, JSON.stringify(data));
     }
 
-    function checkIfAllCardsSubmitted() {
-        console.log(window.viewModel.deck());
-        console.log(window.viewModel.clients());
-        if(window.viewModel.deck.length == window.viewModel.clients.length) {
-            window.viewModel.allCardsSubmitted(true);
-        }
-    }
-
     function handleCmd(senderId, data) {
         var cmd = data.command;
         switch(cmd) {
@@ -133,7 +125,6 @@ function initChromecast() {
             case "card":
                 console.log("card: " + senderId);
                 window.viewModel.addCard(data.content);
-                checkIfAllCardsSubmitted();
                 sendMessage(senderId, {
                     'command': 'card',
                     'content': window.viewModel.getCard()
