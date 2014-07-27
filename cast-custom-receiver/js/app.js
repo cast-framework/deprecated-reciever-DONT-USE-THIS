@@ -4,7 +4,7 @@ $(document).ready(function() {
 		this.text = ko.observable("TALK TO ME, MOTHERFUCKER!!!!!!!!!");
 		this.connections = ko.observable(0);
 		this.displayText = ko.computed(function() {
-			return "There " + (this.connections() == 1 ? "is" : "are") + " " + this.connections() + " connection" + (this.connections() == 1 ? "" : "s")"!\nYou said: "+this.text());
+			return "There " + (this.connections() == 1 ? "is" : "are") + " " + this.connections() + " connection" + (this.connections() == 1 ? "" : "s") + "!\nYou said: "+this.text());
 		});
 	    this.firstName = ko.observable(first);
 	    this.lastName = ko.observable(last);
