@@ -163,8 +163,8 @@ function initChromecast() {
                         winner = window.viewModel.deck()[i];
                     }
                 }
-                window.viewModel.deck(null);
-                window.viewModel.deck(winner);
+                window.viewModel.deck([]]);
+                window.viewModel.deck.push(winner);
                 for(var i = 0; i < window.viewModel.clients().length; i++) {
                     if(window.viewModel.clients()[i].clientId == winner.clientId) {
                         window.viewModel.clients()[i].score(window.viewModel.clients()[i].score()+1);
