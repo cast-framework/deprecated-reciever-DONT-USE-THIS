@@ -129,7 +129,7 @@ function initChromecast() {
                 broadcast({
                     'command': 'ready'
                 });
-                for(var i = 0; i < window.viewModel.client().length; i++) {
+                for(var i = 0; i < window.viewModel.clients().length; i++) {
                     sendMessage(window.viewModel.clients()[i].clientId, {
                         'command': 'czar',
                         'content': {
