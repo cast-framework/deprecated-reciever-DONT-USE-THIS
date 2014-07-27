@@ -29,7 +29,8 @@ limitations under the License.
     <!-- /ko -->
     <!-- ko ifnot: ready -->
         <div class="message">
-            Waiting for all players to join...
+            Waiting for all players to join...<br>
+            Connected Players: <span data-bind="text: clients.length"></span>
         </div>
     <!-- /ko -->
     <!-- ko if: allCardsSubmitted -->
