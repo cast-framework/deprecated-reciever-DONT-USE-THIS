@@ -129,20 +129,15 @@ function initChromecast() {
                 broadcast({
                     'command': 'ready'
                 });
-                // sendMessage(window.viewModel.clients()[window.viewModel.czarIndex()].clientId, {
-                //     'command': 'czar',
-                //     'content': {
-                //         'val': true,
-                //         'card': window.viewModel.blackCard()
-                //     }
-                // });
-                broadcast({
-                    'command': 'czar',
-                    'content': {
-                        'val': false,
-                        'card': null
-                    }
-                });
+                for(var i = 0; i < window.viewModel.client().length; i++) {
+                    sendMessage(window.viewModel.clients()[i].clientId, {
+                        'command': 'czar',
+                        'content': {
+                            'val': window.viewModel.czarIndex() == i,
+                            'card': window.viewModel.blackCard()
+                        }
+                    });
+                }
                 break;
             case "card":
                 console.log("card: " + clientId);
