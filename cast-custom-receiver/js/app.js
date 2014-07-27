@@ -13,9 +13,10 @@ $(document).ready(function() {
 			return "There " + (self.connections() == 1 ? "is" : "are") + " " + self.connections() + " connection" + (self.connections() == 1 ? "" : "s") + "!\nYou said: "+self.text();
 		});
 
+		self.clients = ko.observableArray([]);
 		self.deck =  ko.observableArray([]);
 		self.allCardsSubmitted = ko.computed(function() {
-			return self.deck.length == self.clients.length;
+			return self.clients.length > 0 && (self.deck.length == self.clients.length);
 		});
 
 		self.getCard = function() {
@@ -27,8 +28,6 @@ $(document).ready(function() {
 			return card;
 			//self.deck.push(card);
 		};
-
-		self.clients = ko.observableArray([]);
 
 		self.addCard = function(content) {
 			self.deck.push(new Card(content));
