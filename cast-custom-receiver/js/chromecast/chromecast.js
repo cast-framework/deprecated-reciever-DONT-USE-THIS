@@ -93,7 +93,9 @@ function initChromecast() {
         switch(cmd) {
             case "join":
                 console.log("join: " + clientId);
-                window.viewModel.clients.push(clientId);
+                if(window.viewModel.clients.indexOf(clientId) == -1) {
+                    window.viewModel.clients.push(clientId);
+                }
                 console.dir(window.viewModel.clients());
                 var cards = [];
                 while(cards.length < 7) {
@@ -127,6 +129,11 @@ function initChromecast() {
             case "card":
                 console.log("card: " + clientId);
                 window.viewModel.addCard(data.content, clientId);
+                if(window.viewModel.allCardsSubmitted()) {
+                    console.log("ALL CARDS SUBMITTED!!!");
+                } else {
+                    console.log("NEED MORE CARDS!!!!");
+                }
                 sendMessage(clientId, {
                     'command': 'card',
                     'content': window.viewModel.getCard(clientId)
