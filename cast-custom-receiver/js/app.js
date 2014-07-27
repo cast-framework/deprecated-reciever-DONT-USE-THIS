@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 		self.deck =  ko.observableArray([]);
 		self.allCardsSubmitted = ko.computed(function() {
-			return window.viewModel.deck.length == window.viewModel.clients.length;
+			return self.deck.length == self.clients.length;
 		});
 
 		self.getCard = function() {
