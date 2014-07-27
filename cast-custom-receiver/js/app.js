@@ -42,7 +42,7 @@ $(document).ready(function() {
 
 		self.czarFlipped = ko.observable(false);
 
-		self.chooser = ko.observable(0);
+		self.czarIndex = ko.observable(0);
 		self.text = ko.observable("TALK TO ME, MOTHERFUCKER!!!!!!!!!");
 		self.connections = ko.observable(0);
 		self.displayText = ko.computed(function() {
