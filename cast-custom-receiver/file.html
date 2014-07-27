@@ -29,10 +29,10 @@ limitations under the License.
                         'color': oppositeColor,
                         'border-color': color
                     }">
-                    <!-- ko if: flipped -->
+                    <div data-bind="visible: flipped">
                         <span data-bind="text: name"></span>
                         <img src="img/logo_full.png">
-                    <!-- /ko -->
+                    </div>
                 </div>
             <!-- /ko -->
         </div>
