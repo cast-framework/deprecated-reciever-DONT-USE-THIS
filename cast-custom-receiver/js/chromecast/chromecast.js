@@ -7,7 +7,7 @@ function displayText(viewModel, textMsg) {
     window.castReceiverManager.setApplicationState(textMsg);
 };
 
-function initChromecast(viewModel,) {
+function initChromecast(viewModel) {
 
     var connections = 0;
 
