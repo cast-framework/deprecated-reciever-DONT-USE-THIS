@@ -1,4 +1,4 @@
-var whiteCards = [
+var blackCards = [
 	"TSA guidelines now prohibit __________ on airplanes.",
 	"It's a pity that kids these days are all getting involved with __________.",
 	"In 1,000 years, when paper money is but a distant memory, __________ will be our currency.",
