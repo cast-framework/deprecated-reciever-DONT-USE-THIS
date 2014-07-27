@@ -56,3 +56,9 @@ body {
 	right:50px;
 	bottom:50px;
 }
+
+.toast {
+	postiion:absolute;
+	bottom:100px;
+	left:100px;
+}
