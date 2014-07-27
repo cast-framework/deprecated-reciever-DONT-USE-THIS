@@ -1,6 +1,7 @@
 body {
 	overflow:hidden;
 	background-color:gray;
+	padding:20px;
 }
 .message {
 	height:720PX;
