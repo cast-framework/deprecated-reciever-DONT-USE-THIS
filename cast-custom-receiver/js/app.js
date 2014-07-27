@@ -7,6 +7,9 @@ $(document).ready(function() {
 			this.name = name;
 			this.clientId = clientId;
 			this.color = ko.observable(color);
+			this.oppositeColor = ko.computed(function() {
+				return (this.color() == 'black') ? 'white' : 'black';
+			});
 		};
 
 		self.chooser = ko.observable(0);
