@@ -23,7 +23,10 @@ limitations under the License.
     <!-- ko if: ready -->
         <div id="cardContainer">
             <!-- ko foreach: deck -->
-                <div class="card" data-bind="text: name"></div>
+                <div class="card">
+                    <span data-bind="text: name"></span>
+                    <img src="img/logo-full.png">
+                </div>
             <!-- /ko -->
         </div>
     <!-- /ko -->
