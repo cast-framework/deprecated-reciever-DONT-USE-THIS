@@ -1,5 +1,6 @@
 body {
 	overflow:hidden;
+	background-color:gray;
 }
 .message {
 	height:720PX;
@@ -36,6 +37,8 @@ body {
 	font-size:30px;
 	font-weight:bold;
 	border-radius:10px;
+	box-shadow: 10px 10px 5px #000000;
+
 }
 
 #cardContainer {
