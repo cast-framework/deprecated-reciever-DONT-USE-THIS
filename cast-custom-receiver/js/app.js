@@ -30,7 +30,6 @@ $(document).ready(function() {
 
 		self.addCard = function(content) {
 			self.deck.push(new Card(content));
-			self.allCardsSubmitted(true);
 		};
 
 		self.ready = ko.observable(false);
