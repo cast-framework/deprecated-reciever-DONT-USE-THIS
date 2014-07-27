@@ -39,14 +39,14 @@ function initChromecast() {
 
     // handler for 'senderconnected' event
     castReceiverManager.onSenderConnected = function(event) {
-        window.viewModel.clients.push(event.data);
-        console.dir(window.castReceiverManager.getSenders());
+        document.getElementById("numConnections").innerHTML = window.castReceiverManager.getSenders().length;
         console.log('Received Sender Connected event: ' + event.data);
         console.dir(window.castReceiverManager.getSender(event.data));
     };
 
     // handler for 'senderdisconnected' event
     castReceiverManager.onSenderDisconnected = function(event) {
+        document.getElementById("numConnections").innerHTML = window.castReceiverManager.getSenders().length;
       console.log('Received Sender Disconnected event: ' + event.data);
       if (window.castReceiverManager.getSenders().length == 0) {
       window.close();
