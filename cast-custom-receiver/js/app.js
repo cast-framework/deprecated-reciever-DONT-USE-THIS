@@ -1,17 +1,19 @@
 $(document).ready(function() {
 
 	var ViewModel = function(first, last) {
-		this.text = ko.observable("TALK TO ME, MOTHERFUCKER!!!!!!!!!");
-		this.connections = ko.observable(0);
-		this.displayText = ko.computed(function() {
-			return "There " + (this.connections() == 1 ? "is" : "are") + " " + this.connections() + " connection" + (this.connections() == 1 ? "" : "s") + "!\nYou said: "+this.text();
+		var self = this;
+
+		self.text = ko.observable("TALK TO ME, MOTHERFUCKER!!!!!!!!!");
+		self.connections = ko.observable(0);
+		self.displayText = ko.computed(function() {
+			return "There " + (self.connections() == 1 ? "is" : "are") + " " + self.connections() + " connection" + (self.connections() == 1 ? "" : "s") + "!\nYou said: "+self.text();
 		});
-	    this.firstName = ko.observable(first);
-	    this.lastName = ko.observable(last);
+	    self.firstName = ko.observable(first);
+	    self.lastName = ko.observable(last);
 	 
-	    this.fullName = ko.computed(function() {
+	    self.fullName = ko.computed(function() {
 	        // Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
-	        return this.firstName() + " " + this.lastName();
+	        return self.firstName() + " " + self.lastName();
 	    }, this);
 	};
 	
