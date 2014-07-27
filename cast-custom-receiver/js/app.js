@@ -34,7 +34,7 @@ $(document).ready(function() {
 			//self.deck.push(card);
 		};
 
-		self.getBlackCard = function(clientId) {
+		self.getBlackCard = function() {
 			var index = Math.floor(Math.random()*blackCards.length);
 			var card = new Card(blackCards[index], clientId, "black");
 			if (index > -1) {
