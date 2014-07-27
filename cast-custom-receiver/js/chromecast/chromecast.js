@@ -88,6 +88,10 @@ function initChromecast() {
         window.messageBus.send(clientId, JSON.stringify(data));
     }
 
+    function broadcast(data) {
+        window.messageBus.broadcast(JSON.stringify(data));
+    }
+
     function handleCmd(clientId, data) {
         var cmd = data.command;
         switch(cmd) {
@@ -121,15 +125,14 @@ function initChromecast() {
             case "ready":
                 console.log("ready: " + clientId);
                 window.viewModel.ready(true);
-                sendMessage(clientId, {
+                broadcast({
                     'command': 'ready',
-                    'content': 'cool beans'
                 });
                 break;
             case "card":
                 console.log("card: " + clientId);
                 window.viewModel.addCard(data.content, clientId);
-                if(window.viewModel.allCardsSubmitted()) {
+                if(window.viewModel.deck.length == window.viewModel.clients.length) {
                     console.log("ALL CARDS SUBMITTED!!!");
                 } else {
                     console.log("NEED MORE CARDS!!!!");
