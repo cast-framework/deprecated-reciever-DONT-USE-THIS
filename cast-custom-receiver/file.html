@@ -23,7 +23,10 @@ limitations under the License.
     <!-- ko if: ready -->
         <div id="cardContainer">
             <!-- ko foreach: deck -->
-                <div class="card">
+                <div class="card" data-bind="
+                    style: {
+                        '-webkit-transform':'rotate(5deg)';
+                    }">
                     <span data-bind="text: name"></span>
                     <img src="img/logo-full.png">
                 </div>

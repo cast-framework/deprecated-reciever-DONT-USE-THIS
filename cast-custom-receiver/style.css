@@ -40,13 +40,12 @@ body {
 	font-weight:bold;
 	border-radius:10px;
 	box-shadow: 0px 0px 10px rgba(0,0,0,.75);
-	-webkit-transform:rotate(7deg);
 }
 
 .card img {
 	position:absolute;
-	bottom:10;
-	left:10;
+	bottom:10px;
+	left:10px;
 	width:100px;
 }
 
