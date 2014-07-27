@@ -1,21 +1,21 @@
 // utility function to display the text message in the input field
-function displayText(viewModel, textMsg) {
+function displayText(textMsg) {
     document.getElementById("message").style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16);
     console.log(textMsg);
     //document.getElementById("message").innerHTML=text;
     var exclamations = function() {
         var str = "";
         var i = 0;
-        while(i++ <= viewModel.connections()) {
+        while(i++ <= window.viewModel.connections()) {
             str += "!";
         }
         return str;
     };
-    viewModel.text("There are " + viewModel.connections() + " connection" + (viewModel.connections() == 1 ? "" : "s") + exclamations() + "\nYou said: "+textMsg);
+    viewModel.text("There " + (window.viewModel.connections() == 1 ? "is" : "are") + " " + window.viewModel.connections() + " connection" + (window.viewModel.connections() == 1 ? "" : "s") + exclamations() + "\nYou said: "+textMsg);
     window.castReceiverManager.setApplicationState(textMsg);
 };
 
-function initChromecast(viewModel) {
+function initChromecast() {
 
     var connections = 0;
 
@@ -35,7 +35,7 @@ function initChromecast(viewModel) {
 
     // handler for 'senderconnected' event
     castReceiverManager.onSenderConnected = function(event) {
-        viewModel.connections(window.castReceiverManager.getSenders().length);
+        window.viewModel.connections(window.castReceiverManager.getSenders().length);
         console.log('Received Sender Connected event: ' + event.data);
         console.dir(window.castReceiverManager.getSender(event.data));
     };
@@ -52,10 +52,10 @@ function initChromecast(viewModel) {
     ////// VOLUME ///////
 
     // handler for 'systemvolumechanged' event
-    castReceiverManager.onSystemVolumeChanged = function(event) {
-      console.log('Received System Volume Changed event: ' + event.data['level'] + ' ' +
-          event.data['muted']);
-    };
+    // castReceiverManager.onSystemVolumeChanged = function(event) {
+    //   console.log('Received System Volume Changed event: ' + event.data['level'] + ' ' +
+    //       event.data['muted']);
+    // };
 
     // create a CastMessageBus to handle messages for a custom namespace
     window.messageBus = window.castReceiverManager.getCastMessageBus('urn:x-cast:com.google.cast.sample.helloworld');
@@ -75,7 +75,7 @@ function initChromecast(viewModel) {
         } catch(e) {
             console.log(e);
             sendMessage(event.senderId, "error", "It broked.");
-            displayText(viewModel, event.data);
+            displayText(event.data);
         }
 
         // inform all senders on the CastMessageBus of the incoming message event

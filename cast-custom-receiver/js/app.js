@@ -12,9 +12,9 @@ $(document).ready(function() {
 	    }, this);
 	};
 	
-	var viewModel = new ViewModel("Planet", "Earth");
+	window.viewModel = new ViewModel("Planet", "Earth");
 
-	initChromecast(viewModel);
+	initChromecast();
 
-	ko.applyBindings(viewModel); // This makes Knockout get to work
+	ko.applyBindings(window.viewModel); // This makes Knockout get to work
 });
