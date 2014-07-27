@@ -20,10 +20,7 @@ $(document).ready(function() {
 	
 	window.viewModel = new ViewModel("Planet", "Earth");
 
-	var chromecast = initChromecast();
-	chromecast.onMessage = function() {
-		console.log("MESSAGE");
-	};
+	initChromecast();
 
 	ko.applyBindings(window.viewModel); // This makes Knockout get to work
 });
