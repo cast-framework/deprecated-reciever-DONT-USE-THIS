@@ -9,7 +9,7 @@ function displayText(textMsg) {
 
 function initChromecast() {
 
-    var chromecast = {
+    var Chromecast = function() {
         this.onReady = castReceiverManager.onReady;
         this.onClientConnect = castReceiverManager.onSenderConnected;
         this.onClientDisconnect = castReceiverManager.onSenderDisconnected;
@@ -118,5 +118,5 @@ function initChromecast() {
     
     console.log('Receiver Manager started');
 
-    return chromecast;
+    return Chromecast;
 }
