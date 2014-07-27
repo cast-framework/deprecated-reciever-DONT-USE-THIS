@@ -94,6 +94,7 @@ function initChromecast() {
             case "join":
                 console.log("join: " + senderId);
                 window.viewModel.clients.push(senderId);
+                console.dir(window.viewModel.clients());
                 var cards = [];
                 while(cards.length < 7) {
                     cards.push(window.viewModel.getCard());
@@ -109,6 +110,7 @@ function initChromecast() {
                 if (index > -1) {
                     window.viewModel.clients().splice(index, 1);
                 }
+                console.dir(window.viewModel.clients());
                 sendMessage(senderId, {
                     'command': 'quit',
                     'content': 'NOT ALLOWED'
