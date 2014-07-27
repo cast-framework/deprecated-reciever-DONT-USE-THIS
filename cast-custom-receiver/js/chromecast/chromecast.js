@@ -105,6 +105,9 @@ function initChromecast() {
                 console.log("ready: " + senderId);
                 window.viewModel.ready(true);
                 break;
+            case "card":
+                console.log("card: " + senderId);
+                window.viewModel.getCard();
             default:
                 console.log("default: " + senderId);
         }
