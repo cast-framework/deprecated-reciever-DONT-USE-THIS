@@ -25,10 +25,8 @@ limitations under the License.
             <!-- ko foreach: deck -->
                 <div class="card" data-bind="
                     style: {
-                        'background-color': 'white',
-                        'color': function() {
-                            return (color() == 'black') ? 'black' : 'white'
-                        },
+                        'background-color': color,
+                        'color': 'white',
                         'border-color': color
                     }">
                     <span data-bind="text: name"></span>
