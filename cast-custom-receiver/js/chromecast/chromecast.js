@@ -132,10 +132,10 @@ function initChromecast() {
             case "card":
                 console.log("card: " + clientId);
                 window.viewModel.addCard(data.content, clientId);
-                if(window.viewModel.deck().length == window.viewModel.clients().length) {
-                    console.log("ALL CARDS SUBMITTED!!!");
-                } else {
-                    console.log("NEED MORE CARDS!!!!");
+                if(window.viewModel.allCardsSubmitted()) {
+                    sendMessage(clientId, {
+                        'command': 'allCardsSubmitted'
+                    });
                 }
                 sendMessage(clientId, {
                     'command': 'card',
