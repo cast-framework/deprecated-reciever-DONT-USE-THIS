@@ -60,11 +60,13 @@ function initChromecast() {
     // };
 
     // create a CastMessageBus to handle messages for a custom namespace
-    window.messageBus = window.castReceiverManager.getCastMessageBus('urn:x-cast:com.google.cast.sample.helloworld');
+    window.messageBus = window.castReceiverManager.getCastMessageBus('urn:x-cast:com.davidtschida.android.cards');
 
     // handler for the CastMessageBus message event
     window.messageBus.onMessage = function(event) {
         console.log('Message [' + event.senderId + ']: ' + event.data);
+
+        console.dir(event.data)
 
         try {
             var data = JSON.parse(event.data);

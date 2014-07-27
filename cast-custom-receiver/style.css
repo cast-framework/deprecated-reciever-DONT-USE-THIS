@@ -51,6 +51,7 @@ body {
 
 #cardContainer {
 	width:100%;
+	padding-top:40px;
 	display:flex;
 	flex-direction: row;
 	flex-wrap: wrap;
