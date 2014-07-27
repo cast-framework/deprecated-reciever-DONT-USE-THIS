@@ -11,6 +11,7 @@ $(document).ready(function() {
 	        return this.firstName() + " " + this.lastName();
 	    }, this);
 	};
-	 
-	ko.applyBindings(new ViewModel("Planet", "Earth")); // This makes Knockout get to work
+	
+	var viewModel = new ViewModel("Planet", "Earth");
+	ko.applyBindings(viewModel); // This makes Knockout get to work
 });

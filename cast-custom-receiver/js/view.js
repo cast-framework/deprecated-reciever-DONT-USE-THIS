@@ -3,6 +3,6 @@ function displayText(textMsg) {
     document.getElementById("message").style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16);
     console.log(textMsg);
     //document.getElementById("message").innerHTML=text;
-    text("You said: "+textMsg);
+    viewModel.text("You said: "+textMsg);
     window.castReceiverManager.setApplicationState(textMsg);
 };
