@@ -8,6 +8,10 @@ $(document).ready(function() {
 			this.clientId = clientId;
 		};
 
+		self.rotationCss = ko.computed(function() {
+			return 'rotate(45deg)';
+		});
+
 		self.chooser = ko.observable(0);
 		self.text = ko.observable("TALK TO ME, MOTHERFUCKER!!!!!!!!!");
 		self.connections = ko.observable(0);
