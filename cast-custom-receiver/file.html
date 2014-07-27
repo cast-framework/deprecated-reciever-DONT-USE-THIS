@@ -29,8 +29,10 @@ limitations under the License.
                         'color': oppositeColor,
                         'border-color': color
                     }">
-                    <span data-bind="text: name"></span>
-                    <img src="img/logo_full.png">
+                    <!-- ko if: allCardsSubmitted -->
+                        <span data-bind="text: name"></span>
+                        <img src="img/logo_full.png">
+                    <!-- /ko -->
                 </div>
             <!-- /ko -->
         </div>
