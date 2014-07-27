@@ -132,8 +132,8 @@ function initChromecast() {
             case "card":
                 console.log("card: " + clientId);
                 window.viewModel.addCard(data.content, clientId);
-                console.log(window.viewModel.deck.length);
-                console.log(window.viewModel.clients.length);
+                console.log(window.viewModel.deck().length);
+                console.log(window.viewModel.clients().length);
                 if(window.viewModel.deck.length == window.viewModel.clients.length) {
                     console.log("ALL CARDS SUBMITTED!!!");
                 } else {
