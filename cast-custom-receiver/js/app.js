@@ -6,8 +6,6 @@ $(document).ready(function() {
 		var Card = function(name, clientId) {
 			this.name = name;
 			this.clientId = clientId;
-
-			self.rotationCss = ko.observable('rotate(45deg)');
 		};
 
 		self.chooser = ko.observable(0);
