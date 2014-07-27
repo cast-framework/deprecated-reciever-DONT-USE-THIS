@@ -166,7 +166,7 @@ function initChromecast() {
                 window.viewModel.deck(null);
                 window.viewModel.deck(winner);
                 for(var i = 0; i < window.viewModel.clients().length; i++) {
-                    if(window.viewModel.clients()[i].clientId() == winner.clientId) {
+                    if(window.viewModel.clients()[i].clientId == winner.clientId) {
                         window.viewModel.clients()[i].score(window.viewModel.clients()[i].score()+1);
                         break;
                     }
