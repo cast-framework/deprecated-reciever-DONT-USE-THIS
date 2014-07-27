@@ -24,6 +24,8 @@ $(document).ready(function() {
 			self.deck.push(card);
 		};
 
+		self.clients = ko.observableArray([]);
+
 		self.addCard = function(content) {
 			self.deck.push(new Card(content));
 		};

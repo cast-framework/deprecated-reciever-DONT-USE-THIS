@@ -50,3 +50,9 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
+.numConnections {
+	position:absolute;
+	right:20px;
+	bottom:20px;
+}
