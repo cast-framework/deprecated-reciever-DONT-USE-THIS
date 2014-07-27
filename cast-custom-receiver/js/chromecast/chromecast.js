@@ -1,5 +1,7 @@
 function initChromecast() {
 
+    var connections = 0;
+
     ////// INIT ///////
 
     cast.receiver.logger.setLevelValue(0);
@@ -16,6 +18,7 @@ function initChromecast() {
 
     // handler for 'senderconnected' event
     castReceiverManager.onSenderConnected = function(event) {
+        connections++;
         document.getElementById('connectedDevices').innerHTML += "<br>"+event.data;
         console.log('Received Sender Connected event: ' + event.data);
         console.dir(window.castReceiverManager.getSender(event.data));
@@ -23,6 +26,7 @@ function initChromecast() {
 
     // handler for 'senderdisconnected' event
     castReceiverManager.onSenderDisconnected = function(event) {
+        connections--;
       console.log('Received Sender Disconnected event: ' + event.data);
       if (window.castReceiverManager.getSenders().length == 0) {
       window.close();
