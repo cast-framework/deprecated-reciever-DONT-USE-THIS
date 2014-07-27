@@ -3,9 +3,10 @@ $(document).ready(function() {
 	var ViewModel = function(first, last) {
 		var self = this;
 
-		var Card = function(name, clientId) {
+		var Card = function(name, clientId, color) {
 			this.name = name;
 			this.clientId = clientId;
+			this.color = color;
 		};
 
 		self.chooser = ko.observable(0);
@@ -25,9 +26,19 @@ $(document).ready(function() {
 
 		self.getCard = function(clientId) {
 			var index = Math.floor(Math.random()*cardDeck.length);
-			var card = new Card(cardDeck[index], clientId);
+			var card = new Card(cardDeck[index], clientId, "white");
 			if (index > -1) {
 			    cardDeck.splice(index, 1);
+			}
+			return card;
+			//self.deck.push(card);
+		};
+
+		self.getBlackCard = function(clientId) {
+			var index = Math.floor(Math.random()*blackCards.length);
+			var card = new Card(blackCards[index], clientId, "black");
+			if (index > -1) {
+			    blackCards.splice(index, 1);
 			}
 			return card;
 			//self.deck.push(card);
