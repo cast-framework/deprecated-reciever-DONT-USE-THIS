@@ -133,7 +133,7 @@ function initChromecast() {
                 console.log("card: " + clientId);
                 window.viewModel.addCard(data.content, clientId);
                 if(window.viewModel.allCardsSubmitted()) {
-                    sendMessage(clientId, {
+                    broadcast({
                         'command': 'allCardsSubmitted'
                     });
                 }
