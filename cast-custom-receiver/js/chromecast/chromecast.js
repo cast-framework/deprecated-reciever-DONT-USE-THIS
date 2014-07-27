@@ -88,52 +88,52 @@ function initChromecast() {
         window.messageBus.send(clientId, JSON.stringify(data));
     }
 
-    function handleCmd(senderId, data) {
+    function handleCmd(clientId, data) {
         var cmd = data.command;
         switch(cmd) {
             case "join":
-                console.log("join: " + senderId);
-                window.viewModel.clients.push(senderId);
+                console.log("join: " + clientId);
+                window.viewModel.clients.push(clientId);
                 console.dir(window.viewModel.clients());
                 var cards = [];
                 while(cards.length < 7) {
-                    cards.push(window.viewModel.getCard());
+                    cards.push(window.viewModel.getCard(clientId));
                 }
-                sendMessage(senderId, {
+                sendMessage(clientId, {
                     'command': 'cards',
                     'content': cards
                 });
                 break;
             case "quit":
-                console.log("quit: " + senderId);
-                var index = window.viewModel.clients.indexOf(senderId);
+                console.log("quit: " + clientId);
+                var index = window.viewModel.clients.indexOf(clientId);
                 if (index > -1) {
                     window.viewModel.clients.splice(index, 1);
                 }
                 console.dir(window.viewModel.clients());
-                sendMessage(senderId, {
+                sendMessage(clientId, {
                     'command': 'quit',
                     'content': 'NOT ALLOWED'
                 });
                 break;
             case "ready":
-                console.log("ready: " + senderId);
+                console.log("ready: " + clientId);
                 window.viewModel.ready(true);
-                sendMessage(senderId, {
+                sendMessage(clientId, {
                     'command': 'ready',
                     'content': 'cool beans'
                 });
                 break;
             case "card":
-                console.log("card: " + senderId);
-                window.viewModel.addCard(data.content);
-                sendMessage(senderId, {
+                console.log("card: " + clientId);
+                window.viewModel.addCard(data.content, clientId);
+                sendMessage(clientId, {
                     'command': 'card',
-                    'content': window.viewModel.getCard()
+                    'content': window.viewModel.getCard(clientId)
                 });
                 break;
             default:
-                console.log("default: " + senderId);
+                console.log("default: " + clientId);
         }
     }
 

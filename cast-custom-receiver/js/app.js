@@ -3,8 +3,9 @@ $(document).ready(function() {
 	var ViewModel = function(first, last) {
 		var self = this;
 
-		var Card = function(name) {
+		var Card = function(name, clientId) {
 			this.name = name;
+			this.clientId = clientId;
 		};
 
 		self.text = ko.observable("TALK TO ME, MOTHERFUCKER!!!!!!!!!");
@@ -18,12 +19,12 @@ $(document).ready(function() {
 		self.allCardsSubmitted = ko.computed(function() {
 			console.log(self.deck.length);
 			console.log(self.clients.length);
-			return (self.clients.length > 0) && (self.deck.length == self.clients.length);
+			return (self.clients.length > 0) && (self.deck.length === self.clients.length);
 		});
 
-		self.getCard = function() {
+		self.getCard = function(clientId) {
 			var index = Math.floor(Math.random()*cardDeck.length);
-			var card = new Card(cardDeck[index]);
+			var card = new Card(cardDeck[index], clientId);
 			if (index > -1) {
 			    cardDeck.splice(index, 1);
 			}
@@ -31,8 +32,8 @@ $(document).ready(function() {
 			//self.deck.push(card);
 		};
 
-		self.addCard = function(content) {
-			self.deck.push(new Card(content));
+		self.addCard = function(content, clientId) {
+			self.deck.push(new Card(content, clientId));
 		};
 
 		self.ready = ko.observable(false);
