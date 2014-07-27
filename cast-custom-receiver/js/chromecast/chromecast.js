@@ -124,7 +124,7 @@ function initChromecast() {
             case "ready":
                 console.log("ready: " + clientId);
                 window.viewModel.ready(true);
-                window.viewModel.deck.push(window.viewModel.getBlackCard());
+                window.viewModel.deck.push(window.viewModel.getBlackCard(clientId));
                 broadcast({
                     'command': 'ready'
                 });
