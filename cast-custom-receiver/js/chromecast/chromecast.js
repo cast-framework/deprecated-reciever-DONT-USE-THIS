@@ -98,8 +98,14 @@ function initChromecast() {
         switch(cmd) {
             case "join":
                 console.log("join: " + clientId);
+
+                var playerName = "Joe (Maybe)"
+                if(data.name){
+                  playerName = data.name;
+                }
+
                 if(window.viewModel.clients.indexOf(clientId) == -1) {
-                    window.viewModel.addPlayer(clientId);
+                    window.viewModel.addPlayer(clientId, playerName);
                 }
                 console.dir(window.viewModel.clients());
                 var cards = [];
@@ -187,7 +193,7 @@ function initChromecast() {
     window.castReceiverManager.start({
         statusText: "Application is starting"
     });
-    
+
     console.log('Receiver Manager started');
 
     //return Chromecast();

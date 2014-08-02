@@ -12,13 +12,14 @@ $(document).ready(function() {
 			this.flipped = ko.observable(false);
 		};
 
-		var Player = function(clientId) {
+		var Player = function(clientId, name) {
+			this.name = name;
 			this.clientId = clientId;
 			this.score = ko.observable(0);
 		};
 
-		self.addPlayer = function(clientId) {
-			self.clients.push(new Player(clientId));
+		self.addPlayer = function(clientId, name) {
+			self.clients.push(new Player(clientId, name));
 		};
 
 		self.removePlayer = function(clientId) {
@@ -102,7 +103,7 @@ $(document).ready(function() {
 		    return text;
 		}
 	};
-	
+
 	window.viewModel = new ViewModel("Planet", "Earth");
 
 	initChromecast();
